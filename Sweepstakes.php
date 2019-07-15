@@ -17,6 +17,22 @@
     <div class="container" style='background-color: powderblue;'>
       <br>
 
+    <?php 
+      $dbPw = 'sh1balnom';
+      $dbUsername = 'phpsweepstakes';
+      $server = 'localhost';
+      $dbName = 'sweepstakes';
+
+      $conn = new mysqli($server, $dbUsername, $dbPw, $dbName);
+
+      if ($conn->connect_errno) 
+      {
+        exit("Database Connection Failed. Reason: ".$conn->connect_error);
+      }
+
+      $conn->close();
+    ?>
+
     <?php
       $firstNameErr = $lastNameErr = $emailErr = $phoneNumberErr = "";
       $firstName = $lastName = $email = $phoneNumber = "";
