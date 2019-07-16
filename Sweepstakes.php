@@ -63,7 +63,34 @@
         $data = htmlspecialchars($data);
         return $data;
       }
+      
     ?>
+
+    <?php 
+        $dbPw = 'sh1balnom';
+        $dbUsername = 'phpsweepstakes';
+        $server = 'localhost';
+        $dbName = 'sweepstakes';
+
+        $conn = new PDO('mysql:host='.$server.';dbname='.$dbName, $dbUsername, $dbPw);
+        $query = "INSERT INTO Sponsors (first_name, last_name, email, phone_number) VALUES ('$firstName', '$lastName', '$email', '$phoneNumber')";
+
+        $exists = "SELECT * FROM Sponsors WHERE 'email' = '$email'";
+        echo $exists; 
+
+        if ($exists->rowCount() > 0) 
+        {
+          echo "User already exists!";
+          $result = null;
+          $conn = null;
+        } else {
+          $query = "INSERT INTO Sponsors (first_name, last_name, email, phone_number) VALUES ('$firstName', '$lastName', '$email', '$phoneNumber')";
+          $result = $conn->query($query);
+
+          $result = null;
+          $conn = null;
+        }
+      ?>
 
     <p><span class = "error">* required fields</span></p>
      
@@ -105,70 +132,23 @@
             </td>
          </table>
       </form>
-      
-      <?php 
-        $dbPw = 'sh1balnom';
-        $dbUsername = 'phpsweepstakes';
-        $server = 'localhost';
-        $dbName = 'sweepstakes';
-
-        $conn = new PDO('mysql:host='.$server.';dbname='.$dbName, $dbUsername, $dbPw);
-        $exists = "SELECT * FROM Sponsors WHERE 'email' = '$email'";
-
-        if ($exists) 
-        {
-          echo "User already exists!";
-          $result = null;
-          $conn = null;
-        } else {
-          $query = "INSERT INTO Sponsors (first_name, last_name, email, phone_number) VALUES ('$firstName', '$lastName', '$email', '$phoneNumber')";
-          $result = $conn->query($query);
-
-          $result = null;
-          $conn = null;
-        }
-        ?>
-
-
 
       <?php 
-        $dbPw = 'sh1balnom';
-        $dbUsername = 'phpsweepstakes';
-        $server = 'localhost';
-        $dbName = 'sweepstakes';
-
-        $conn = new PDO('mysql:host='.$server.';dbname='.$dbName, $dbUsername, $dbPw);
-        $query = "SELECT first_name, last_name FROM Sponsors ORDER BY first_name";
-        
-        $results = $conn->query($query);
-
-        if ($results->rowCount() > 0) 
-        {
-          foreach($result as $row) 
-          {
-            echo "First Name: ".$row['first_name'].PHP_EOL; 
-            echo "Last Name: ".$row['last_name'].PHP_EOL;
-          }
-        }
-
-        $results = null;
-        $conn = null;
-    
-        //  echo "<h2>
-        //         Your input
-        //       </h2>
-        //       <hr>";
-        //  echo 'First name: '.$firstName;
-        //  echo "<br>";
+         echo "<h2>
+                Your input
+              </h2>
+              <hr>";
+         echo 'First name: '.$firstName;
+         echo "<br>";
          
-        //  echo 'Last name: '.$lastName;
-        //  echo "<br>";
+         echo 'Last name: '.$lastName;
+         echo "<br>";
          
-        //  echo 'Phone Number: '.$phoneNumber;
-        //  echo "<br>";
+         echo 'Phone Number: '.$phoneNumber;
+         echo "<br>";
          
-        //  echo 'Email: '.$email;
-        //  echo "<br>";
+         echo 'Email: '.$email;
+         echo "<br>";
       ?>
 
     </div>
