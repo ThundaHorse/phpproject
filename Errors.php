@@ -41,42 +41,34 @@
   //   }
   // }
 
-  // function test_input($data) {
-  //   $data = trim($data);
-  //   $data = stripslashes($data);
-  //   $data = htmlspecialchars($data);
-  //   return $data;
-  // }
-
-  if (count($_POST) > 0) {
-    if ($_POST['firstName'] != '') {
+  if (count($_POST)) {
+    if ($_POST['firstName'] != "") {
       $_SESSION['firstName'] = $_POST['firstName'];
       header('Location: output.php');
     } else {
-      $firstNameErr = 'validation';
+      $firstNameErr = 'required';
     }
 
-    if ($_POST['lastName'] != '') {
+    if ($_POST['lastName'] != "") {
       $_SESSION['lastName'] = $_POST['lastName']; 
       header('Location: output.php'); 
     } else {
-      $lastNameErr = 'validation';
+      $lastNameErr = 'required';
     }
 
-    if ($_POST['email'] != '') {
+    if ($_POST['email'] != "") {
       $_SESSION['email'] = $_POST['email']; 
       header('Location: output.php'); 
     } else {
-      $emailErr = 'validation';
+      $emailErr = 'required';
     }
 
-    if ($_POST['phoneNumber'] != '' && preg_match("/^([0-9])+([\.|,]([0-9])*)?$/", $_POST['phoneNumber'])) {
+    if ($_POST['phoneNumber'] != "" && preg_match("/^([0-9])+([\.|,]([0-9])*)?$/", $_POST['phoneNumber'])) {
       $_SESSION['phoneNumber'] = $_POST['phoneNumber']; 
       header('Location: output.php'); 
     } else {
-      $phoneNumberErr = 'validation';
+      $phoneNumberErr = 'required';
     }
-    
   }
-
+  
 ?>
