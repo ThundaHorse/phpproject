@@ -1,5 +1,6 @@
 <?php 
   include "dbconfig.php";
+  include "Errors.php";
 
   if (isset($_POST['submit'])) {
     $fName = $_POST['firstName'];
@@ -35,7 +36,7 @@
       <br>
       <p>* required fields</p>
       
-      <form method="post" action="">
+      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <table>
           <tr>
             <td>First Name:</td>
