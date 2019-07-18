@@ -6,12 +6,13 @@
     $lName = $_POST['lastName'];
     $emailaddress = $_POST['email'];
     $phone = $_POST['phoneNumber'];
-
-    if($signup -> register($fName, $lName, $emailaddress, $phone)) {
-      header("Location: Sweepstakes.php?");
+    
+    if ($signup -> register($fName, $lName, $emailaddress, $phone)) {
+      header("Location: Sweepstakes.php");
+    } else {
+      return register($fName, $lName, $emailaddress, $phone);
     }
-  }
-
+  } 
 ?> 
 
 <!DOCTYPE html>
