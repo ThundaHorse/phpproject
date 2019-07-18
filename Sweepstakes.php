@@ -2,7 +2,6 @@
   include "Errors.php";
   include 'inclusive.php';
   include "dbconfig.php";
-
 ?>
 
 <!DOCTYPE html>
@@ -18,63 +17,50 @@
         color: red;
       }
     </style>
-
   </head>
 
   <body>
     <div class="container" style='background-color: powderblue;'>
       <br>
-
-
       <p>* required fields</p>
       
-      <form method = "post" action = "Sweepstakes.php">
+      <form method = "post" action ="Sweepstakes.php">
         <table>
-            <tr>
-            <div class="<?= $firstNameErr ?>">
-              <td>First Name:</td>
-                <td>
-                  <input type = "text" name = "firstName" placeholder='First Name'>
-                  <span class = "<?= $firstNameErr ?>">* <?php echo $firstNameErr;?></span>
-                </td>
-              </div>
-            </tr>
-
-            <tr>
-              <div class="<?= $lastNameErr ?>">
-                <td>Last Name:</td>
-                  <td>
-                    <input type = "text" name = "lastName" placeholder='Last Name'>
-                    <span class = "required">* <?php echo $lastNameErr;?></span>
-                  </td>
-              </div>
-            </tr>
-          
-            <tr>
-              <div class="<?= $emailErr ?>">
-              <td>E-mail: </td>
-                <td>
-                  <input type = "text" name = "email" placeholder='example@example.com'> 
-                  <span class = "required">* <?php echo $emailErr;?></span>
-                </td>
-              </div>
-            </tr>
-
-            <tr>
-              <div class="<?= $phoneNumberErr ?>">
-              <td>Phone Number: </td>
-                <td>
-                  <input type = "text" name = "phoneNumber" placeholder='XXXXXXXXXX'>
-                  <span class = "required">* <?php echo $phoneNumberErr;?></span>
-                </td>
-              </div>
-            </tr>
-          
+          <tr>
+            <td>First Name:</td>
             <td>
-              <button class='btn btn-info btn-md' type='submit' name='submit' value='submit'>
-                Submit
-              </button>
+              <input type="text" name="firstName" placeholder='First Name'>
+              <span class = "required">* <?php echo $firstNameErr;?></span>
             </td>
+          </tr>
+
+          <tr>
+            <td>Last Name:</td>
+            <td>
+              <input type="text" name="lastName" placeholder='Last Name'>
+              <span class = "required">* <?php echo $lastNameErr;?></span>
+            </td>
+          </tr>
+        
+          <tr>
+            <td>E-mail: </td>
+            <td>
+              <input type="text" name="email" placeholder='example@example.com'> 
+              <span class = "required">* <?php echo $emailErr;?></span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Phone Number: </td>
+            <td>
+              <input type="text" name="phoneNumber" placeholder='XXXXXXXXXX'>
+              <span class = "required">* <?php echo $phoneNumberErr;?></span>
+            </td>
+          </tr>
+        
+          <td>
+            <input class='btn btn-info btn-md' type='submit' name='submit' value='submit'>
+          </td>
         </table>
       </form>
 
