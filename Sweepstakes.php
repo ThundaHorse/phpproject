@@ -1,6 +1,5 @@
 <?php
   include "Errors.php";
-  include 'inclusive.php';
   include "dbconfig.php";
 ?>
 
@@ -24,7 +23,7 @@
       <br>
       <p>* required fields</p>
       
-      <form method = "post" action ="Sweepstakes.php">
+      <form method="post" action="output.php">
         <table>
           <tr>
             <td>First Name:</td>
