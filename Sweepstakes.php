@@ -1,7 +1,18 @@
-<?php
-  include "Errors.php";
+<?php 
   include "dbconfig.php";
-?>
+
+  if (isset($_POST['submit'])) {
+    $fName = $_POST['firstName'];
+    $lName = $_POST['lastName'];
+    $emailaddress = $_POST['email'];
+    $phone = $_POST['phoneNumber'];
+
+    if($signup -> register($fName, $lName, $emailaddress, $phone)) {
+      header("Location: Sweepstakes.php?");
+    }
+  }
+
+?> 
 
 <!DOCTYPE html>
 <html lang='en'>
@@ -23,13 +34,12 @@
       <br>
       <p>* required fields</p>
       
-      <form method="post" action="output.php">
+      <form method="post" action="">
         <table>
           <tr>
             <td>First Name:</td>
             <td>
               <input type="text" name="firstName" placeholder='First Name'>
-              <span class = "required">* <?php echo $firstNameErr;?></span>
             </td>
           </tr>
 
@@ -37,7 +47,6 @@
             <td>Last Name:</td>
             <td>
               <input type="text" name="lastName" placeholder='Last Name'>
-              <span class = "required">* <?php echo $lastNameErr;?></span>
             </td>
           </tr>
         
@@ -45,7 +54,6 @@
             <td>E-mail: </td>
             <td>
               <input type="text" name="email" placeholder='example@example.com'> 
-              <span class = "required">* <?php echo $emailErr;?></span>
             </td>
           </tr>
 
@@ -53,7 +61,6 @@
             <td>Phone Number: </td>
             <td>
               <input type="text" name="phoneNumber" placeholder='XXXXXXXXXX'>
-              <span class = "required">* <?php echo $phoneNumberErr;?></span>
             </td>
           </tr>
         
